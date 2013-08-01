@@ -1,6 +1,6 @@
 # Tinypng
 
-Converting PNG files using TinyPNG.org.
+Converting PNG files using TinyPNG.org. 
 
 ## Installation
 
@@ -14,5 +14,4 @@ or
 ## Usage
 
     $ tinypng -h
-
 

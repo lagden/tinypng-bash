@@ -1,7 +1,7 @@
 {
   "name": "tinypng",
   "description": "Converting PNG files using TinyPNG.org",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Thiago Lagden <lagden@gmail.com>",
   "contributors": ["Voormedia <info@voormedia.com>"],
   "homepage": "https://github.com/lagden/tinypng-bash",
