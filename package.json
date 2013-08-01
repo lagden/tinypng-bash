@@ -1,0 +1,17 @@
+{
+  "name": "tinypng",
+  "description": "Converting PNG files using TinyPNG.org",
+  "version": "0.1.0",
+  "author": "Voormedia <info@voormedia.com>",
+  "contributors": ["Thiago Lagden <lagden@gmail.com>"],
+  "homepage": "https://github.com/lagden/tinypng-bash",
+  "keywords": ["png", "compress", "image"],
+  "bin": {
+    "tinypng": "./bin/tinypng"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lagden/tinypng-bash.git"
+  },
+  "license": "MIT"
+}

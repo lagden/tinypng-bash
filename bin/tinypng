@@ -1,0 +1,116 @@
+#!/usr/bin/env sh
+
+#
+# Setup.
+#
+
+VERSION="0.1.0"
+
+#
+# Log <type> <msg>
+#
+
+log() {
+  printf "  \033[36m%10s\033[0m : \033[90m%s\033[0m\n" $1 $2
+}
+
+#
+# Exit with the given <msg ...>
+#
+
+abort() {
+  printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
+}
+
+#
+# Ensure we have curl or wget support.
+#
+
+GET=
+
+command -v curl > /dev/null && GET="curl -# -L"
+
+test -z "$GET" && abort "curl required"
+
+#
+# Output usage information.
+#
+
+display_help() {
+  cat <<-EOF
+
+  Usage: tinypng [options] [args]
+
+  Options:
+
+    -V, --version        Output current version of tinypng
+    -h, --help           Display help information
+    -r, --recursive      Converting all PNG files recursively
+
+  Example:
+
+    tinypng -r
+
+    or
+
+    tinypng image.png
+
+    or
+
+    tinypng folder/*.png
+
+EOF
+  exit 0
+}
+
+display_n_version() {
+  echo $VERSION && exit 0
+}
+
+converting() {
+    JSON=`curl http://tinypng.org/api/shrink --request POST --data-binary @$1 2>/dev/null  `
+    URL=${JSON/*url\":\"/}
+    URL=${URL/\"*/}
+
+    curl $URL>${1} 2>/dev/null
+
+    log "${1} updated."
+}
+
+run() {
+    FIND=$1
+    DIR=`pwd`
+    RECURSIVE=${2:-false}
+
+    if [ -f $FIND  ]
+    then
+        converting $FIND
+    elif [ $FIND == "*.png" ]
+    then
+            [[ $RECURSIVE == true ]] && NDIR="${DIR}" || NDIR="${DIR}/$FIND"
+            find "${NDIR}" -type f -name "${FIND}" 2> /dev/null | while IFS= read -r file
+            do
+                if [ -e $file ]; then
+                    converting $file
+                fi
+            done
+    else
+        abort "File not found."
+    fi
+
+    exit 0
+}
+
+while test $# -ne 0; do
+    case $1 in
+        -V|--version) display_n_version ;;
+        -h|--help|help) display_help ;;
+        -r|--recursive) run "*.png" true ;;
+        *) run $1 ;;
+    esac
+    shift
+done
+
+abort "Missing args!! See help: tinypng -h"
+
+exit 0
