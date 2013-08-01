@@ -1,19 +1,18 @@
-tinypng-bash
-============
+# Tinypng
 
-Bash script for shrinking PNG files of current directory.
+Converting PNG files using TinyPNG.org.
+
+## Installation
+
+    $ npm install -g tinypng
+
+or
+
+    $ make install
 
 
-One-line installation
----------------------
+## Usage
 
-Run this command on your computer to install plugin. (Password will be required).
+    $ tinypng -h
 
 
-    sudo curl -o /usr/bin/tinypng https://raw.github.com/hhhonzik/tinypng-bash/master/tinypng 2>/dev/null && sudo chmod +x /usr/bin/tinypng && echo "Hurray! Tinypng installed to /usr/bin/tinypng"
-
-Usage
-------------
-
-    cd /web-project/images/
-    tinypng
