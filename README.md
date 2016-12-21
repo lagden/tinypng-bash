@@ -1,17 +1,25 @@
-# Tinypng
+# TinyPNG Bash
 
-Converting PNG files using TinyPNG.org. 
+Converting PNG files using TinyPNG.org
+
 
 ## Installation
 
-    $ npm install -g tinypng
+```
+$ npm install -g tinypng
+```
 
 or
 
-    $ make install
-
+```
+$ make install
+```
 
 ## Usage
 
-    $ tinypng -h
+$ tinypng image.png
 
+
+## License
+
+MIT © [Thiago Lagden](http://lagden.in)
