@@ -1,4 +1,10 @@
-# TinyPNG Bash
+# [Discontinued] TinyPNG Bash
+
+
+This project was discontinued.
+Please, see https://pngquant.org/lib/
+
+---
 
 Converting PNG files using TinyPNG.org
 
